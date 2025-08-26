@@ -184,7 +184,7 @@
 
 <script>
 import { router } from '@inertiajs/vue3'
-import { store } from '@/routes/registry'
+import { store } from '../../../routes/registry'
 
 export default {
     name: 'CreateKeyModal',

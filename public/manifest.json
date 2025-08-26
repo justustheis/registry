@@ -1,11 +1,11 @@
 {
   "resources/js/registry.js": {
-    "file": "assets/registry-3MsHgny7.js",
+    "file": "assets/registry-0ApB5QyU.js",
     "name": "registry",
     "src": "resources/js/registry.js",
     "isEntry": true,
     "css": [
-      "assets/registry-DdlM6y9o.css"
+      "assets/registry-wqHZNd8u.css"
     ]
   }
 }

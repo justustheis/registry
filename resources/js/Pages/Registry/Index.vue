@@ -23,10 +23,10 @@
                                 class="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded disabled:opacity-50"
                                 title="Refresh"
                             >
-                                <svg 
-                                    :class="['w-4 h-4', { 'animate-spin': isRefreshing }]" 
-                                    fill="none" 
-                                    stroke="currentColor" 
+                                <svg
+                                    :class="['w-4 h-4', { 'animate-spin': isRefreshing }]"
+                                    fill="none"
+                                    stroke="currentColor"
                                     viewBox="0 0 24 24"
                                 >
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -44,7 +44,7 @@
                         />
                     </div>
                 </div>
-                
+
                 <!-- Tree View -->
                 <div class="flex-1 overflow-auto">
                     <TreeView
@@ -97,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Entry Detail -->
                 <div class="flex-1 overflow-auto">
                     <EntryDetail
@@ -114,21 +114,21 @@
             @close="showCreateKeyModal = false"
             @created="showCreateKeyModal = false"
         />
-        
+
         <RenameKeyModal
             v-if="showRenameKeyModal"
             :entry="selectedEntry"
             @close="showRenameKeyModal = false"
             @renamed="handleKeyRenamed"
         />
-        
+
         <EditValueModal
             v-if="showEditValueModal"
             :entry="selectedEntry"
             @close="showEditValueModal = false"
             @updated="handleValueUpdated"
         />
-        
+
         <DeleteKeyModal
             v-if="showDeleteKeyModal"
             :entry="selectedEntry"
@@ -139,13 +139,13 @@
 </template>
 
 <script>
-import AppLayout from '@/Layouts/AppLayout.vue'
-import TreeView from '@/Components/Registry/TreeView.vue'
-import EntryDetail from '@/Components/Registry/EntryDetail.vue'
-import CreateKeyModal from '@/Pages/Registry/Modals/CreateKeyModal.vue'
-import RenameKeyModal from '@/Pages/Registry/Modals/RenameKeyModal.vue'
-import EditValueModal from '@/Pages/Registry/Modals/EditValueModal.vue'
-import DeleteKeyModal from '@/Pages/Registry/Modals/DeleteKeyModal.vue'
+import AppLayout from '../../Layouts/AppLayout.vue'
+import TreeView from '../..//Components/Registry/TreeView.vue'
+import EntryDetail from '../../Components/Registry/EntryDetail.vue'
+import CreateKeyModal from '../../Pages/Registry/Modals/CreateKeyModal.vue'
+import RenameKeyModal from '../../Pages/Registry/Modals/RenameKeyModal.vue'
+import EditValueModal from '../../Pages/Registry/Modals/EditValueModal.vue'
+import DeleteKeyModal from '../../Pages/Registry/Modals/DeleteKeyModal.vue'
 import { router } from '@inertiajs/vue3'
 
 export default {
@@ -307,13 +307,13 @@ export default {
         },
         handleSearch(searchTerm) {
             const lowerSearchTerm = searchTerm.toLowerCase()
-            
+
             // Find all matching entries
             const matchingEntries = this.entries.filter(entry =>
                 entry.key.toLowerCase().includes(lowerSearchTerm) ||
                 entry.key.split('.').pop().toLowerCase().includes(lowerSearchTerm)
             )
-            
+
             // Auto-select if there's only one result
             if (matchingEntries.length === 1) {
                 this.currentSelectedKey = matchingEntries[0].key
@@ -326,14 +326,14 @@ export default {
                 })
             }
         },
-        
+
         expandParentFolders(key) {
             const parts = key.split('.')
             let currentPath = ''
-            
+
             // Create a new Set with existing keys plus the new ones for reactivity
             const newExpandedKeys = new Set(this.expandedKeys)
-            
+
             // Expand all parent folders
             for (let i = 0; i < parts.length - 1; i++) {
                 if (currentPath) {
@@ -343,26 +343,26 @@ export default {
                 }
                 newExpandedKeys.add(currentPath)
             }
-            
+
             // If this is a folder key (has children), expand it too
-            const hasChildren = this.entries.some(entry => 
+            const hasChildren = this.entries.some(entry =>
                 entry.key !== key && entry.key.startsWith(key + '.')
             )
             if (hasChildren) {
                 newExpandedKeys.add(key)
             }
-            
+
             // Replace the entire Set to trigger reactivity
             this.expandedKeys = newExpandedKeys
         },
-        
+
         filterTree(tree, searchTerm, shouldExpand = false) {
             return tree.filter(node => {
                 const matches = node.key.toLowerCase().includes(searchTerm) ||
                                node.name.toLowerCase().includes(searchTerm)
-                
+
                 if (matches) return true
-                
+
                 if (node.children && node.children.length > 0) {
                     const filteredChildren = this.filterTree(node.children, searchTerm, shouldExpand)
                     if (filteredChildren.length > 0) {
@@ -373,15 +373,15 @@ export default {
                         }
                     }
                 }
-                
+
                 return false
             }).map(node => {
                 if (typeof node === 'boolean') return null
-                
+
                 const hasMatches = node.key.toLowerCase().includes(searchTerm) ||
                                  node.name.toLowerCase().includes(searchTerm) ||
                                  (node.children && node.children.length > 0)
-                
+
                 return {
                     ...node,
                     children: node.children ? this.filterTree(node.children, searchTerm, shouldExpand) : [],

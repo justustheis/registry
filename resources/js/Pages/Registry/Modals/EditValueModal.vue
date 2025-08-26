@@ -2,7 +2,7 @@
     <div class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
             <!-- Background overlay -->
-            <div 
+            <div
                 class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
                 @click="$emit('close')"
             ></div>
@@ -82,7 +82,7 @@
                         <label for="value" class="block text-sm font-medium text-gray-700 mb-1">
                             Value
                         </label>
-                        
+
                         <!-- Auto/String/Integer/Float -->
                         <input
                             v-if="form.type === 'auto' || form.type === 'string' || form.type === 'integer' || form.type === 'float'"
@@ -97,7 +97,7 @@
                                 errors.value ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500'
                             ]"
                         />
-                        
+
                         <!-- Boolean -->
                         <select
                             v-else-if="form.type === 'boolean'"
@@ -112,7 +112,7 @@
                             <option value="true">True</option>
                             <option value="false">False</option>
                         </select>
-                        
+
                         <!-- Array/Object -->
                         <textarea
                             v-else-if="form.type === 'array' || form.type === 'object'"
@@ -126,7 +126,7 @@
                                 errors.value ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500'
                             ]"
                         ></textarea>
-                        
+
                         <p v-if="errors.value" class="mt-1 text-xs text-red-600">{{ errors.value }}</p>
                         <p v-if="form.type === 'array' || form.type === 'object'" class="mt-1 text-xs text-gray-500">
                             Enter valid JSON format
@@ -203,7 +203,7 @@
 
 <script>
 import { router } from '@inertiajs/vue3'
-import { update } from '@/routes/registry'
+import { update } from '../../../routes/registry'
 
 export default {
     name: 'EditValueModal',
@@ -242,7 +242,7 @@ export default {
     methods: {
         formatValueForForm(value, type) {
             if (value === null || value === undefined) return ''
-            
+
             switch (type) {
                 case 'boolean':
                     return value ? 'true' : 'false'
@@ -274,7 +274,7 @@ export default {
         handleTypeChange() {
             // Only reset value for specific type transitions that require it
             const currentValue = this.form.value
-            
+
             if (this.form.type === 'boolean' && !['true', 'false'].includes(currentValue)) {
                 // Set to true/false only if current value isn't already a boolean string
                 this.form.value = 'true'

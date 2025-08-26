@@ -2,7 +2,7 @@
     <div class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
             <!-- Background overlay -->
-            <div 
+            <div
                 class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
                 @click="$emit('close')"
             ></div>
@@ -39,13 +39,13 @@
                         </div>
                         <div class="flex items-center space-x-2">
                             <span class="text-sm font-medium text-gray-700">Type:</span>
-                            <span 
+                            <span
                                 class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
                                 :class="getTypeColorClass(entry.type)"
                             >
                                 {{ entry.type || 'auto' }}
                             </span>
-                            <span 
+                            <span
                                 v-if="entry.encrypted"
                                 class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800"
                             >
@@ -93,7 +93,7 @@
 
 <script>
 import { router } from '@inertiajs/vue3'
-import { destroy } from '@/routes/registry'
+import { destroy } from '../../../routes/registry'
 
 export default {
     name: 'DeleteKeyModal',
@@ -112,7 +112,7 @@ export default {
     methods: {
         formatValue(value, type) {
             if (value == null) return ''
-            
+
             switch (type) {
                 case 'string':
                     return String(value)
@@ -145,12 +145,12 @@ export default {
         },
         handleDelete() {
             this.processing = true
-            
+
             // Emit deleted event
             this.$emit('deleted')
-            
+
             const deleteRoute = destroy(this.entry.key)
-            
+
             router.visit(deleteRoute.url, {
                 method: deleteRoute.method.toLowerCase(),
                 preserveState: false,

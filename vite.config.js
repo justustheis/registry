@@ -1,33 +1,20 @@
-import { defineConfig } from 'vite'
-import laravel from 'laravel-vite-plugin'
-import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
-    plugins: [
-        laravel({
-            input: ['resources/js/registry.js'],
-            refresh: true,
-        }),
-        vue({
-            template: {
-                transformAssetUrls: {
-                    base: null,
-                    includeAbsolute: false,
-                },
-            },
-        }),
-    ],
-    resolve: {
-        alias: {
-            '@': resolve(__dirname, 'resources/js'),
-        },
+    plugins: [vue()],
+    publicDir: false,
+    server: {
+        port: 5174,
+        strictPort: true,
+        hmr: { port: 5174 },
     },
     build: {
         outDir: 'public',
         emptyOutDir: true,
         manifest: 'manifest.json',
-        assetsDir: 'assets',
+        rollupOptions: {
+            input: 'resources/js/registry.js',
+        },
     },
-    base: '/vendor/justustheis/registry/',
-})
+});

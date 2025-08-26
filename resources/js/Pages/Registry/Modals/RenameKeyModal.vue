@@ -2,7 +2,7 @@
     <div class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
             <!-- Background overlay -->
-            <div 
+            <div
                 class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
                 @click="$emit('close')"
             ></div>
@@ -152,7 +152,7 @@
 
 <script>
 import { router } from '@inertiajs/vue3'
-import { rename } from '@/routes/registry'
+import { rename } from '../../../routes/registry'
 
 export default {
     name: 'RenameKeyModal',
