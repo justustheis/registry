@@ -1,0 +1,14 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+
+parameters:
+    paths:
+        - src/
+
+    # Level 10 is the highest level
+    level: 8
+
+    ignoreErrors:
+        - '#Trait JustusTheis\\Registry\\Traits\\HasRegistry is used zero times and is not analysed.#'
+

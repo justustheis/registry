@@ -1,0 +1,67 @@
+{
+    "name": "justustheis/registry",
+    "description": "Flexible key–value store for Laravel with model scoping, encryption, caching, and runtime config overrides.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "registry",
+        "key-value-store",
+        "settings",
+        "configuration",
+        "scoping",
+        "encryption",
+        "caching",
+        "vue",
+        "inertia",
+        "dot-access",
+        "dynamic-config",
+        "frontend-settings",
+        "settings-ui",
+        "tenant-settings",
+        "config-management"
+    ],
+    "authors": [
+        {
+            "name": "Justus Theis",
+            "email": "justus@sharma-theis.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "illuminate/support": "^12",
+        "illuminate/database": "^12",
+        "inertiajs/inertia-laravel": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12",
+        "orchestra/testbench": "^10",
+        "phpstan/phpstan": "^2.1",
+        "laravel/pint": "^1.24",
+        "larastan/larastan": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "JustusTheis\\Registry\\": "src/"
+        },
+        "files": [
+            "src/RegistryHelpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JustusTheis\\Registry\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JustusTheis\\Registry\\RegistryServiceProvider"
+            ],
+            "aliases": {
+                "Registry": "JustusTheis\\Registry\\Facades\\Registry"
+            }
+        }
+    }
+}

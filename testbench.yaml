@@ -1,0 +1,18 @@
+providers:
+  - JustusTheis\Registry\RegistryServiceProvider
+
+env:
+  - APP_KEY=base64:SGVsbG9Xb3JsZERlZmF1bHRBcHBsaWNhdGlvbktleUhlcmU=
+  - DB_CONNECTION=testing
+  - CACHE_STORE=array
+
+migrations:
+  - database/migrations
+
+workbench:
+  install: true
+  build: []
+  assets: []
+  discovers:
+    web: true
+    commands: true

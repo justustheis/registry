@@ -1,0 +1,120 @@
+# ========================================
+# Laravel Project .gitignore (Improved)
+# Based on: https://www.gitignore.io/api/vim,tags,macos,laravel
+# ========================================
+
+# --- Laravel ---
+/vendor/
+/node_modules/
+.env
+.phpunit.result.cache
+.php-cs-fixer.cache
+.php_cs.cache
+Homestead.yaml
+Homestead.json
+/.vagrant
+composer.phar
+
+# Laravel storage (runtime files)
+storage/*.key
+/storage/*.index*
+/storage/fonts/*
+/storage/temp/*
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+
+# Laravel 4 legacy
+bootstrap/compiled.php
+app/storage/
+
+# Laravel 5+
+public/storage
+public/hot
+public/uploads
+
+# --- IDEs / Editors ---
+## PhpStorm / IntelliJ / JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+.idea_modules/
+*.iws
+
+# JetBrains sensitive/high-churn project files
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+.idea/**/contentModel.xml
+.idea/**/dataSources*
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+.idea/**/gradle.xml
+.idea/**/libraries
+.idea/**/mongoSettings.xml
+.idea/**/httpRequests
+.idea/caches/build_file_checksums.ser
+.idea/replstate.xml
+.idea/sonarlint
+
+# VSCode (optional, uncomment if applicable)
+# .vscode/
+
+# --- OS-Specific ---
+## macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# --- Tags & IDE Helper ---
+tags
+.tags
+.tags.*
+TAGS
+.TAGS
+GTAGS
+GRTAGS
+GPATH
+GSYMS
+gtags.files
+cscope.*
+_ide_helper.php
+
+# --- Vim ---
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+Session.vim
+.netrwhist
+*~
+[._]*.un~
+
+# --- Project-specific extras ---
+.claude/
+*_todo.md
+
+# --- Optional: keep empty dirs in Git ---
+!.gitkeep
+

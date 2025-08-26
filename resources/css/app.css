@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        box-sizing: border-box;
+    }
+    
+    html {
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+}
+
+@layer components {
+    /* Registry Editor specific styles */
+    .registry-tree-view {
+        @apply select-none;
+    }
+    
+    .registry-tree-view::-webkit-scrollbar {
+        @apply w-1.5;
+    }
+    
+    .registry-tree-view::-webkit-scrollbar-track {
+        @apply bg-gray-100;
+    }
+    
+    .registry-tree-view::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 rounded-full;
+    }
+    
+    .registry-tree-view::-webkit-scrollbar-thumb:hover {
+        @apply bg-gray-400;
+    }
+    
+    .registry-tree-node {
+        @apply cursor-pointer hover:bg-gray-50 transition-colors duration-150;
+    }
+    
+    .registry-tree-node.selected {
+        @apply bg-blue-50 border-r-2 border-blue-500;
+    }
+    
+    .registry-tree-node .node-icon {
+        @apply w-4 h-4 mr-2 flex-shrink-0;
+    }
+    
+    .registry-detail-card {
+        @apply bg-white border border-gray-200 rounded-lg shadow-sm;
+    }
+    
+    .registry-detail-header {
+        @apply px-4 py-3 border-b border-gray-200 bg-gray-50 rounded-t-lg;
+    }
+    
+    .registry-value-display {
+        @apply min-h-20 px-3 py-2 text-sm bg-white border border-gray-200 rounded-md font-mono break-all;
+    }
+    
+    .registry-type-badge {
+        @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    }
+    
+    /* Modal animations */
+    .modal-overlay {
+        @apply transition-opacity duration-300;
+    }
+    
+    .modal-container {
+        @apply transition-all duration-300 transform;
+    }
+    
+    /* Form styles */
+    .form-input {
+        @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm;
+    }
+    
+    .form-input.error {
+        @apply border-red-300 focus:border-red-500 focus:ring-red-500;
+    }
+    
+    .form-label {
+        @apply block text-sm font-medium text-gray-700 mb-1;
+    }
+    
+    .form-error {
+        @apply text-xs text-red-600 mt-1;
+    }
+    
+    .form-help {
+        @apply text-xs text-gray-500 mt-1;
+    }
+    
+    /* Button styles */
+    .btn {
+        @apply inline-flex items-center px-3 py-2 border text-sm leading-4 font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-150;
+    }
+    
+    .btn-primary {
+        @apply border-transparent text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-500;
+    }
+    
+    .btn-secondary {
+        @apply border-gray-300 text-gray-700 bg-white hover:bg-gray-50 focus:ring-blue-500;
+    }
+    
+    .btn-danger {
+        @apply border-transparent text-white bg-red-600 hover:bg-red-700 focus:ring-red-500;
+    }
+    
+    .btn-success {
+        @apply border-transparent text-white bg-green-600 hover:bg-green-700 focus:ring-green-500;
+    }
+    
+    .btn-warning {
+        @apply border-transparent text-white bg-yellow-600 hover:bg-yellow-700 focus:ring-yellow-500;
+    }
+    
+    .btn:disabled {
+        @apply opacity-50 cursor-not-allowed;
+    }
+    
+    /* Loading spinner */
+    .spinner {
+        @apply animate-spin h-5 w-5 text-current;
+    }
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+    
+    .scrollbar-thin {
+        scrollbar-width: thin;
+        scrollbar-color: theme('colors.gray.300') theme('colors.gray.100');
+    }
+    
+    .scrollbar-thin::-webkit-scrollbar {
+        @apply w-1.5 h-1.5;
+    }
+    
+    .scrollbar-thin::-webkit-scrollbar-track {
+        @apply bg-gray-100;
+    }
+    
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 rounded-full;
+    }
+    
+    .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+        @apply bg-gray-400;
+    }
+}
