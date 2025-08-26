@@ -2,7 +2,7 @@ import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 import '../css/app.css'
 
-const pages = import.meta.glob('./Pages/**/*.vue', { eager: true });
+const pages = import.meta.glob('./pages/**/*.vue', { eager: true });
 
 
 createInertiaApp({
