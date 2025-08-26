@@ -37,23 +37,8 @@
             };
         </script>
 
-        @php
-            $manifest = json_decode(file_get_contents(public_path('vendor/justustheis/registry/manifest.json')), true);
-            $jsFile = $manifest['resources/js/registry.js']['file'] ?? null;
-            $cssFiles = [];
-            if (isset($manifest['resources/js/registry.js']['css'])) {
-                $cssFiles = $manifest['resources/js/registry.js']['css'];
-            }
-        @endphp
-
-        @if($jsFile)
-            @foreach($cssFiles as $cssFile)
-                <link rel="stylesheet" href="{{ asset('vendor/justustheis/registry/' . $cssFile) }}">
-            @endforeach
-            <script type="module" src="{{ asset('vendor/justustheis/registry/' . $jsFile) }}"></script>
-        @endif
-
         @inertiaHead
+        @vite('resources/js/registry.js', 'vendor/justustheis/registry')
     </head>
     <body class="font-sans antialiased">
         @inertia

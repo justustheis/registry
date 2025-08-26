@@ -142,10 +142,10 @@
 import AppLayout from '../../Layouts/AppLayout.vue'
 import TreeView from '../..//Components/Registry/TreeView.vue'
 import EntryDetail from '../../Components/Registry/EntryDetail.vue'
-import CreateKeyModal from '../../Pages/Registry/Modals/CreateKeyModal.vue'
-import RenameKeyModal from '../../Pages/Registry/Modals/RenameKeyModal.vue'
-import EditValueModal from '../../Pages/Registry/Modals/EditValueModal.vue'
-import DeleteKeyModal from '../../Pages/Registry/Modals/DeleteKeyModal.vue'
+import CreateKeyModal from './Modals/CreateKeyModal.vue'
+import RenameKeyModal from './Modals/RenameKeyModal.vue'
+import EditValueModal from './Modals/EditValueModal.vue'
+import DeleteKeyModal from './Modals/DeleteKeyModal.vue'
 import { router } from '@inertiajs/vue3'
 
 export default {
