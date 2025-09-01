@@ -37,6 +37,9 @@ class RegistryController extends Controller
      */
     public function index(Request $request): Response
     {
+        // Set the root view specifically for registry routes
+        Inertia::setRootView('registry::app');
+        
         $entries = RegistryEntryResource::collection(
             RegistryEntry::orderBy('registrable_type')
                 ->orderBy('registrable_id')
