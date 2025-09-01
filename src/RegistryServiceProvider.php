@@ -4,6 +4,7 @@ namespace JustusTheis\Registry;
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use JustusTheis\Registry\Facades\Registry;
 use JustusTheis\Registry\Http\Bindings\RegistryKeyBinding;
 
 class RegistryServiceProvider extends ServiceProvider
@@ -51,6 +52,8 @@ class RegistryServiceProvider extends ServiceProvider
 
         $this->loadRoutesFrom(__DIR__.'/../routes/registry.php');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'registry');
+
+        $this->applyConfigFileOverride();
     }
 
     /**
@@ -63,5 +66,26 @@ class RegistryServiceProvider extends ServiceProvider
         $router = $this->app->make(Router::class);
 
         $router->bind('key', new RegistryKeyBinding());
+    }
+
+    /**
+     * Overwrite config files with registry data for the current environment.
+     *
+     * @return void
+     */
+    protected function applyConfigFileOverride(): void
+    {
+        if (! $this->app['db']->connection()->getSchemaBuilder()->hasTable('registries')) {
+            return;
+        }
+
+        $overrides = config('registry.overrides.'.$this->app->environment(), []);
+
+        foreach ($overrides as $configKey => $registryKey) {
+            $value = Registry::get($registryKey, null, false, true);
+            if ($value !== null) {
+                config([$configKey => $value]);
+            }
+        }
     }
 }
