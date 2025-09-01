@@ -42,11 +42,7 @@ class RegistryServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../public' => public_path('vendor/justustheis/registry'),
-        ], 'registry-assets');
-
-        $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/registry'),
-        ], 'views');
+        ], 'public');
 
         require_once __DIR__.'/RegistryHelpers.php';
 

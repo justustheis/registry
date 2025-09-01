@@ -45,7 +45,7 @@ class RegistryController extends Controller
         )->resolve();
         $tree = RegistryTreeBuilder::handle($entries);
 
-        return Inertia::render('Registry/Index', [
+        return Inertia::render('Index', [
             'entries'     => $entries,
             'tree'        => $tree,
             'selectedKey' => $request->query('selected') ?? null,

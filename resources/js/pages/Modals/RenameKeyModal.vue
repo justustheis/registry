@@ -152,7 +152,7 @@
 
 <script>
 import { router } from '@inertiajs/vue3'
-import { rename } from '../../../routes/registry'
+import { rename } from '../../routes/registry'
 
 export default {
     name: 'RenameKeyModal',

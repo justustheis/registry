@@ -93,7 +93,7 @@
 
 <script>
 import { router } from '@inertiajs/vue3'
-import { destroy } from '../../../routes/registry'
+import { destroy } from '../../routes/registry'
 
 export default {
     name: 'DeleteKeyModal',

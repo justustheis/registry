@@ -139,9 +139,9 @@
 </template>
 
 <script>
-import AppLayout from '../../Layouts/AppLayout.vue'
-import TreeView from '../..//Components/Registry/TreeView.vue'
-import EntryDetail from '../../Components/Registry/EntryDetail.vue'
+import AppLayout from '../Layouts/AppLayout.vue'
+import TreeView from '../Components/Registry/TreeView.vue'
+import EntryDetail from '../Components/Registry/EntryDetail.vue'
 import CreateKeyModal from './Modals/CreateKeyModal.vue'
 import RenameKeyModal from './Modals/RenameKeyModal.vue'
 import EditValueModal from './Modals/EditValueModal.vue'
@@ -149,7 +149,7 @@ import DeleteKeyModal from './Modals/DeleteKeyModal.vue'
 import { router } from '@inertiajs/vue3'
 
 export default {
-    name: 'RegistryIndex',
+    name: 'Index',
     components: {
         AppLayout,
         TreeView,
