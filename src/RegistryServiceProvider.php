@@ -51,11 +51,6 @@ class RegistryServiceProvider extends ServiceProvider
 
         $this->loadRoutesFrom(__DIR__.'/../routes/registry.php');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'registry');
-
-        // Configure Inertia to use the package's app template for registry routes
-        if (class_exists(\Inertia\Inertia::class)) {
-            \Inertia\Inertia::setRootView('registry::app');
-        }
     }
 
     /**

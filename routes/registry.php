@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Route;
 use JustusTheis\Registry\Http\Controllers\RegistryController;
 
 Route::prefix('registry')
-    ->middleware(['web', \JustusTheis\Registry\Http\Middleware\RegistryAuthorizationMiddleware::class])
+    ->middleware([
+        'web', 
+        \JustusTheis\Registry\Http\Middleware\RegistryInertiaMiddleware::class,
+        \JustusTheis\Registry\Http\Middleware\RegistryAuthorizationMiddleware::class
+    ])
     ->as('registry.')
     ->group(function () {
         Route::get('/', [RegistryController::class, 'index'])->name('index');
