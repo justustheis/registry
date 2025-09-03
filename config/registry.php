@@ -150,7 +150,7 @@ return [
     |
     */
 
-    'override' => [
+    'overrides' => [
 
         'production' => [
             // 'app.name' => 'app.name',

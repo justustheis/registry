@@ -278,6 +278,17 @@ class RegistryCastTest extends TestCase
     }
 
     #[Test]
+    public function it_auto_detects_integer_values_when_type_is_not_set_using_the_helper()
+    {
+        config(['registry.auto_cast_types' => true]);
+
+        $this->assertSame(123, registry('test.auto.int.positive', 123));
+        $this->assertSame(-456, registry('test.auto.int.negative', -456));
+        $this->assertSame(0, registry('test.auto.int.zero', 0));
+        $this->assertIsInt(registry('test.auto.int.positive', 123));
+    }
+
+    #[Test]
     public function it_auto_detects_float_values_when_type_is_null()
     {
         config(['registry.auto_cast_types' => true]);

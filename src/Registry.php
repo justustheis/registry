@@ -104,7 +104,7 @@ class Registry
      */
     public function type(string|null $type): self
     {
-        $this->type = $type;
+        $this->type = $type == '' ? null : $type;
 
         return $this;
     }
@@ -167,7 +167,7 @@ class Registry
             $entry = RegistryEntry::findPair($this->key, $this->scopedTo);
 
             if ($entry === null) {
-                $value = $this->default ? $this->value($this->default)->set() : null;
+                $value = $this->default !== null ? $this->value($this->default)->set() : null;
                 $encrypted = false;
             } else {
                 $value = $entry->encrypted ? RegistryEncryption::encrypt($entry->value) : $entry->value;
