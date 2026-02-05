@@ -109,3 +109,23 @@ if (! function_exists('registry_delete')) {
         return $registry->delete();
     }
 }
+
+if (! function_exists('registry_filter')) {
+    /**
+     * Filter registry entries by a pattern.
+     *
+     * @param  string                                $pattern Pattern with % as wildcard (e.g., 'app.settings.%')
+     * @param  Model|null                            $model   Optional model to scope the registry to
+     * @return \Illuminate\Support\Collection<string, mixed> Collection keyed by registry key with values
+     */
+    function registry_filter(string $pattern, $model = null): \Illuminate\Support\Collection
+    {
+        $registry = new Registry();
+
+        if ($model !== null) {
+            $registry = $registry->for($model);
+        }
+
+        return $registry->filter($pattern);
+    }
+}

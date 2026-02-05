@@ -402,6 +402,24 @@ class Registry
     }
 
     /**
+     * Filter registry entries by a pattern and return their values.
+     *
+     * @param  string                     $pattern Pattern with % as wildcard (e.g., 'radius.mayByPass.%')
+     * @return Collection<string, mixed> Collection keyed by registry key with values
+     */
+    public function filter(string $pattern): Collection
+    {
+        $entries = RegistryEntry::where('registrable_type', $this->scopedTo ? get_class($this->scopedTo) : null)
+            ->where('registrable_id', $this->scopedTo ? $this->scopedTo->getKey() : null)
+            ->where('key', 'LIKE', $pattern)
+            ->get();
+
+        return $entries->mapWithKeys(function ($entry) {
+            return [$entry->key => $entry->value];
+        });
+    }
+
+    /**
      * Generate a unique cache key for the current registry configuration.
      *
      * @return string The cache key
